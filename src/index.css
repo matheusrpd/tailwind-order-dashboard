@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .icon-menu {
+    @apply h-5 w-5 fill-current text-gray-400 group-hover:text-blue-500;
+  }
+}
