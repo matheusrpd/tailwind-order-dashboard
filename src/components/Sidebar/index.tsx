@@ -8,6 +8,7 @@ import { ReactComponent as ProfileIcon } from "../../assets/icons/profile.svg";
 import { ReactComponent as BillingIcon } from "../../assets/icons/billing.svg";
 import { ReactComponent as HelpIcon } from "../../assets/icons/help.svg";
 import { ReactComponent as LogoutIcon } from "../../assets/icons/logout.svg";
+import { ReactComponent as ChevronLeftIcon } from "../../assets/icons/chevron-left.svg";
 
 import { Menu } from '../Menu/index';
 
@@ -30,7 +31,11 @@ const groupsMenu = [
 
 export function Sidebar() {
   return (
-    <aside className="flex flex-col py-4 px-6 w-52 border-r border-r-gray-200">
+    <aside className="flex flex-col py-4 px-6 w-52 border-r border-r-gray-200 relative">
+      <button className="absolute -right-2.5 top-5 flex justify-center items-center bg-gray-100 rounded-full border border-gray-200">
+        <ChevronLeftIcon className="w-4 h-4 text-gray-400"/>
+      </button>
+
       <a href="#">
         <img src="img/logo.png" alt="Swagup" className="w-24" />
       </a>
