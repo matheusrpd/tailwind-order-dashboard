@@ -1,9 +1,11 @@
 import { ReactComponent as ArrowLeftIcon } from "./assets/icons/arrow-left.svg";
 import { ReactComponent as ChevronRightIcon } from "./assets/icons/chevron-right.svg";
+import { ReactComponent as InfoIcon } from "./assets/icons/info.svg";
 
 import { Sidebar } from "./components/Sidebar";
 import { ListProducts } from "./components/ListProducts";
-// import InfoIcon from "./assets/icons/info.svg";
+import { ListProductsOrder } from "./components/ListProductsOrder";
+import { formatMoney } from "./utils/formatMoney";
 
 const products = [
   {
@@ -28,6 +30,19 @@ const products = [
     category: "Bulk",
   },
 ];
+
+const orders = [
+  { productName: "Swag -- Pack 1/29/2020", price: 75, quantity: 8 },
+  { productName: "Tech Pack -- Pack 1/29/2020", price: 26, quantity: 24 },
+  { productName: "Bella + Canvas Tee", price: 14, quantity: 32 },
+  { productName: "Nike Cap", price: 7.2, quantity: 20 },
+  { productName: "Swag -- Pack 1/29/2020", price: 75, quantity: 23 },
+  { productName: "Preset Pack -- Pack 1/29/2020", price: 30, quantity: 24 },
+  { productName: "Swag Pack + Nike Cap", price: 18, quantity: 3 },
+  { productName: "Bulk Swag", price: 30, quantity: 2 },
+];
+
+const totalOrder = orders.reduce((total, order) => total + (order.price * order.quantity), 0);
 
 export function Dashboard() {
   return (
@@ -108,7 +123,46 @@ export function Dashboard() {
         </div>
       </main>
 
-      <aside className="w-72 border-l border-gray-200"></aside>
+      <aside className="flex flex-col w-72 border-l border-gray-200">
+        <div className="py-4 px-6 border-b border-gray-200">
+          <strong className="font-semibold leading-relaxed text-gray-800">Order #22353 Summary</strong>
+          <p className="text-xs leading-loose text-gray-400">Order Placed: 12-30-2020</p>
+        </div>
+
+        <ul className="px-6 overflow-y-scroll flex-1">
+          <ListProductsOrder orders={orders} />
+        </ul>
+
+        <div className="px-6 pb-4 border-t border-gray-200">
+          <div className="py-2">
+            <div className="flex items-center justify-between py-1">
+              <span className="text-xs text-gray-400">Subtotal</span>
+              <strong className="font-semibold">{formatMoney(totalOrder)}</strong>
+            </div>
+            <div className="flex items-center justify-between py-1">
+              <span className="flex items-center gap-x-1">
+                <p className="text-xs text-gray-400">Shipping</p>
+                <InfoIcon className="w-4 h-4 text-gray-300 stroke-current" />
+              </span>              <span className="text-sm text-gray-300">TBD</span>
+            </div>
+            <div className="flex items-center justify-between py-1">
+              <span className="flex items-center gap-x-1">
+                <p className="text-xs text-gray-400">Warehouse</p>
+                <InfoIcon className="w-4 h-4 text-gray-300 stroke-current" />
+              </span>              <span className="text-sm text-gray-300">TBD</span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between py-4 border-t border-gray-200">
+            <span className="text-sm text-gray-400">Total</span>
+            <strong className="text-lg font-semibold">{formatMoney(totalOrder)}</strong>
+          </div>
+
+          <button className="flex items-center justify-center py-4 w-full rounded-full text-sm font-semibold text-white bg-blue-500 hover:bg-blue-600">
+            Continue
+          </button>
+        </div>
+      </aside>
     </div>
   );
 }
