@@ -1,4 +1,4 @@
-# Order Dashboard
+# order-dashboard
 
 <img src=".github/gif-preview.gif" alt="Dashboard">
 
@@ -60,4 +60,4 @@ Código realizado a partir dos seguintes conteúdos:
 * [Tailwind Collections](https://www.youtube.com/channel/UCgz_8CY-6QVIrVuwA6CpZNA)
 * [Design Shojol Islam](https://dribbble.com/shots/17284635-Order-details-page-v2-SwagUp)
 
-[⬆ Voltar ao topo](#Order Dashboard)<br>
+[⬆ Voltar ao topo](#order-dashboard)<br>
